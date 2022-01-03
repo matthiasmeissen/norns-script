@@ -43,9 +43,7 @@ end
 -- enc(<knob>,<turn>) is a special function
 -- that listens to the turn of the knob
 function enc(k,d)
-  if k==2 then
-    params:delta("midi",d)
-  elseif k==3 then
+  if k==3 then
     params:delta("amp",d)
   end
 end
@@ -60,10 +58,9 @@ function redraw()
   if play_sound then
     screen.text_center("press any key to stop")
   else
-    screen.text_center("press any key to drone")
+    screen.text_center("press any key to play")
   end
   screen.move(64,30)
-  screen.text_center("note: "..musicutil.note_num_to_name(math.floor(params:get("midi")),true))
   screen.move(64,40)
   screen.text_center("amp: "..params:get("amp"))
   screen.update()
