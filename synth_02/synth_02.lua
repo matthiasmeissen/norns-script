@@ -4,9 +4,14 @@ function init()
   redraw()
 end
 
-function key(z)
-  if z == 1 then
+function key(k,z)
+  if k==2 and z == 1 then
     engine.play(1)
+    screen.clear()
+    screen.move(64,32)
+    screen.text_center("Pressed")
+    screen.update()
+  else
     redraw()
   end
 end
@@ -14,6 +19,6 @@ end
 function redraw()
   screen.clear()
   screen.move(64,32)
-  screen.text("Press K3 to play")
+  screen.text_center("Press K3 to play")
   screen.update()
 end
