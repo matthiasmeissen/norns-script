@@ -1,4 +1,4 @@
-engine.name="Simple_Synth"
+engine.name="Synth_01"
 
 -- this variable shows if the synth is playing
 play_sound=false

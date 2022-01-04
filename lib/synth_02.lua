@@ -1,7 +1,7 @@
-engine.name = 'Synth_01'
+engine.name = 'Synth_02'
 
 function init()
-
+  redraw()
 end
 
 function key(z)

@@ -1,4 +1,4 @@
-Engine_Simple_Synth : CroneEngine {
+Engine_Synth_01 : CroneEngine {
 
 	var simpleSynth;
 

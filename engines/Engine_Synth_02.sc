@@ -1,6 +1,6 @@
-Engine_Synth_01 : CroneEngine {
+Engine_Synth_02 : CroneEngine {
 
-    var params;
+var params;
 
 	alloc {
 
