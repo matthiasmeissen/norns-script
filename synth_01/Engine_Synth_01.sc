@@ -27,11 +27,7 @@ Engine_Synth_01 : CroneEngine {
         }).add;
         
 
-        this.addCommand("freq", "f", { arg msg;
-            freq = msg[1];
-        });
-
-        this.addCommand("play", "i", { arg msg;
+        this.addCommand("play", "f", { arg msg;
             Synth.new("Synth_1");
         });
 		
