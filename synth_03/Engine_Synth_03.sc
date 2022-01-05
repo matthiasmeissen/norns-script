@@ -8,7 +8,7 @@ Engine_Synth_03 : CroneEngine {
 
 	alloc {
 
-        SynthDef("Synth_1", {
+        SynthDef("Synth1", {
 	        arg freq = 300, sub_div = 5, noise_level = 0.1, 
             cutoff = 6000, resonance = 1, amp = 0.2;
             
@@ -27,14 +27,14 @@ Engine_Synth_03 : CroneEngine {
 
         context.server.sync;
 
-        synth = Synth("Synth_01", target:context.server);
+        synth = Synth("Synth1", target:context.server);
         
 
         this.addCommand("amp","f", { arg msg;
         	synth.set('amp', msg[1]);
         });
 
-        this.addCommand("cut","f", { arg msg;
+        this.addCommand("cutoff","f", { arg msg;
         	synth.set('cutoff', msg[1]);
         });
 		
@@ -43,5 +43,4 @@ Engine_Synth_03 : CroneEngine {
     free {
 		synth.free;
     }
-
 }
