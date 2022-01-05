@@ -1,6 +1,10 @@
 Engine_Synth_03 : CroneEngine {
 
-var synth;
+    var synth;
+
+    *new { arg context, doneCallback;
+		^super.new(context, doneCallback);
+	}
 
 	alloc {
 
@@ -27,13 +31,17 @@ var synth;
         
 
         this.addCommand("amp","f", { arg msg;
-        	simpleSynth.set('amp', msg[1]);
+        	synth.set('amp', msg[1]);
         });
 
         this.addCommand("cut","f", { arg msg;
-        	simpleSynth.set('cutoff', msg[1]);
+        	synth.set('cutoff', msg[1]);
         });
 		
 	}
+
+    free {
+		synth.free;
+    }
 
 }
