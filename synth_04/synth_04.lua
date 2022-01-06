@@ -4,23 +4,26 @@
 engine.name = 'Synth_04'
 
 function init()
-  x = 1
-  y = 1
+  x = 20
+  y = 60
   play = false  
 end
 
 function key(n,z)
   if n == 2 and z == 1 then
     play = not play
+    engine.play(1)
     redraw()
   end
 end
 
 function enc(n,d)
   if n == 2 then
-    x = x + d
+    x = util.clamp(x + d, 0, 100)
+    engine.attack(x / 100)
   elseif n == 3 then
-    y = y + d
+    y = util.clamp(y + d, 0, 100)
+    engine.release(y / 100)
   end
   redraw()
 end
@@ -28,18 +31,21 @@ end
 function redraw()
   screen.clear()
   screen.level(15)
-  screen.move(0, 10)
-  screen.text("X: " .. x .. " Y: " .. y)
+  screen.move(60, 32)
+  screen.text("Press to play")
+  draw_bar(10, 10, x / 100)
+  draw_bar(30, 10, y / 100)
+  screen.update()
+end
+
+function draw_bar(x, y, amount)
+  local h = 40
+  local x = x
+  local y = y
+  local amount = 1 - amount
   
-  if play then
-    screen.rect(x, y, 10, 10)
-    screen.stroke()
-    screen.rect(x+2, y+2, 5, 5)
-    screen.fill()
-    screen.update()
-  else
-    screen.rect(x, y, 10, 10)
-    screen.stroke()
-    screen.update()
-  end
+  screen.rect(x, y, 10, h)
+  screen.stroke()
+  screen.rect(x, y + h * amount, 10, h - h * amount)
+  screen.fill()
 end
