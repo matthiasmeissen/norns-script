@@ -3,6 +3,8 @@ Engine_Synth_05 : CroneEngine {
     var synth;
     var synth_attack = 0.2;
     var synth_release = 0.6;
+    var synth_cutoff = 6000;
+    var synth_resonance = 1;
 
     alloc {
 
@@ -10,7 +12,7 @@ Engine_Synth_05 : CroneEngine {
             arg freq = 300, sub_div = 5, noise_level = 0.1, 
             attack = 0.2, release = 0.6,
             cutoff = 6000, resonance = 1, amp = 0.2;
-            
+
             var pulse = Pulse.ar(freq: freq);
             var saw = Saw.ar(freq: freq);
             var sub = Pulse.ar(freq: freq / sub_div);
@@ -41,6 +43,14 @@ Engine_Synth_05 : CroneEngine {
         
         this.addCommand("release","f", { arg msg;
             synth_release = msg[1];
+        });
+        
+        this.addCommand("cutoff","f", { arg msg;
+            synth_cutoff = msg[1];
+        });
+        
+        this.addCommand("resonance","f", { arg msg;
+            synth_resonance = msg[1];
         });
 
 }
